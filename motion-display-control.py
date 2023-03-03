@@ -78,4 +78,4 @@ class Motion:
         self.resetTimer()
 
 
-motion = Motion(gpio_pin=4, display_delay=60, verbose=False)
+motion = Motion(gpio_pin=4, display_delay=60, verbose=True)
