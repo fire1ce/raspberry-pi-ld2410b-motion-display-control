@@ -45,6 +45,7 @@ class Motion:
         self.display_delay = display_delay
         self.pir = MotionSensor(gpio_pin)
         self.pir.when_motion = self.onMotion
+        self.pir.when_no_motion = self.noMotion
         self.resetTimer()
         pause()
 
@@ -56,17 +57,8 @@ class Motion:
             self.timer.cancel()
 
         logging.debug(f"[Motion]: Setting timer for {self.display_delay}")
-        self.timer = Timer(self.display_delay, self.checkPresence)
+        self.timer = Timer(self.display_delay, Display.turnOff)
         self.timer.start()
-
-    def checkPresence(self):
-        logging.debug("[Motion]: Checking motion and turning off display..")
-        if self.pir.when_motion:
-            logging.debug("[Motion]: Motion detected, resetting timer..")
-            self.resetTimer()
-        else:
-            logging.debug("[Motion]: No motion detected, turning off display..")
-            Display.turnOff()
 
     def onMotion(self):
         logging.debug("[Motion]: Motion detected!")
@@ -75,7 +67,15 @@ class Motion:
             logging.debug("[Motion]: Display is off, turning it on!")
             Display.turnOn()
 
+        # self.resetTimer()
+
+    def noMotion(self):
+        logging.debug("[Motion]: No Motion detected!")
         self.resetTimer()
 
+        # if Display.isTurnedOn() == False:
+        #     logging.debug("[Motion]: Display is off, turning it on!")
+        #     Display.turnOn()
 
-motion = Motion(gpio_pin=4, display_delay=60, verbose=True)
+
+motion = Motion(gpio_pin=4, display_delay=60, verbose=False)
