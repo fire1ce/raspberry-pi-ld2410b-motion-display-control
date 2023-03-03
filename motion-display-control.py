@@ -74,7 +74,7 @@ class Motion:
         # self.resetTimer()
 
     def noMotion(self):
-        logging.debug("[Motion]: No Motion detected waiting ${self.display_delay} seconds to turn off the display!")
+        logging.debug(f"[Motion]: No Motion detected waiting {self.display_delay} seconds to turn off the display!")
         self.resetTimer()
 
         # if Display.isTurnedOn() == False:
