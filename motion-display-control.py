@@ -56,12 +56,12 @@ class Motion:
             self.timer.cancel()
 
         logging.debug(f"[Motion]: Setting timer for {self.display_delay}")
-        self.timer = Timer(self.display_delay, self.checkMotionAndTurnOffDisplay)
+        self.timer = Timer(self.display_delay, self.checkPresence)
         self.timer.start()
 
-    def checkMotionAndTurnOffDisplay(self):
+    def checkPresence(self):
         logging.debug("[Motion]: Checking motion and turning off display..")
-        if self.pir.motion_detected:
+        if self.pir.when_motion:
             logging.debug("[Motion]: Motion detected, resetting timer..")
             self.resetTimer()
         else:
