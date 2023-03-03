@@ -71,15 +71,9 @@ class Motion:
             logging.debug("[Motion]: Existing timer found! Destroying it!")
             self.timer.cancel()
 
-        # self.resetTimer()
-
     def noMotion(self):
         logging.debug(f"[Motion]: No Motion detected waiting {self.display_delay} seconds to turn off the display!")
         self.resetTimer()
 
-        # if Display.isTurnedOn() == False:
-        #     logging.debug("[Motion]: Display is off, turning it on!")
-        #     Display.turnOn()
 
-
-motion = Motion(gpio_pin=4, display_delay=30, verbose=True)
+motion = Motion(gpio_pin=4, display_delay=30, verbose=False)
