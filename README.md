@@ -4,9 +4,9 @@
 
 This script uses pin GPIO4(7) to read data from Motion (PIR) Sensor, Any 5v and ground for PIR Sensor
 
-![gpio layout](https://github.com/fire1ce/raspberry-pi-pir-motion-display-control/raw/main/gpio_layout.jpg)
+![gpio layout](https://github.com/fire1ce/raspberry-pi-ld2410b-motion-display-control/raw/main/gpio_layout.jpg)
 
-![raspberrypi-with-PIR-sensor](https://github.com/fire1ce/raspberry-pi-pir-motion-display-control/raw/main/raspberrypi-with-PIR-sensor.jpg)
+![raspberrypi-with-PIR-sensor](https://github.com/fire1ce/raspberry-pi-ld2410b-motion-display-control/raw/main/raspberrypi-with-PIR-sensor.jpg)
 
 ## Requirements
 
@@ -23,13 +23,13 @@ sudo apt install python3-gpiozero
 This will install the script as `service` and it will run at boot
 
 ```bash
-curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-display-control/main/install.sh | bash
+curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-ld2410b-motion-display-control/main/install.sh | bash
 ```
 
 ## Uninstall
 
 ```bash
-curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-display-control/main/uninstall.sh | bash
+curl https://raw.githubusercontent.com/fire1ce/raspberry-pi-ld2410b-motion-display-control/main/uninstall.sh | bash
 ```
 
 ## Default Behavior
@@ -97,4 +97,4 @@ sudo systemctl status motion-display-control.service
 ## Contributors
 
 Thanks to [Boris Berman
-](https://github.com/bermanboris/raspberry-pi-pir-motion-display-control) for the script rewrite from function to classes
+](https://github.com/bermanboris/raspberry-pi-ld2410b-motion-display-control) for the script rewrite from function to classes
