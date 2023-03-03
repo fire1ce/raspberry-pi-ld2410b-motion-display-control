@@ -1,7 +1,7 @@
 #!/bin/bash
 
-curl -O https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-display-control/main/motion-display-control.py
-curl -O https://raw.githubusercontent.com/fire1ce/raspberry-pi-pir-motion-display-control/main/motion-display-control.service
+curl -O https://raw.githubusercontent.com/fire1ce/raspberry-pi-ld2410b-motion-display-control/main/motion-display-control.py
+curl -O https://raw.githubusercontent.com/fire1ce/raspberry-pi-ld2410b-motion-display-control/main/motion-display-control.service
 
 if [ ! -d "/usr/local/bin" ]; then
   sudo mkdir -p /usr/local/bin
