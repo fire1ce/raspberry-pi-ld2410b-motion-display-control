@@ -82,4 +82,4 @@ class Motion:
         #     Display.turnOn()
 
 
-motion = Motion(gpio_pin=4, display_delay=60, verbose=False)
+motion = Motion(gpio_pin=4, display_delay=30, verbose=True)
