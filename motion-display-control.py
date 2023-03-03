@@ -18,12 +18,12 @@ class Display:
     @staticmethod
     def turnOn():
         logging.debug("[Display]: Turning ON the display..")
-        run(['vcgencmd', 'display_power', '1'], stdout=DEVNULL)
+        run(["vcgencmd", "display_power", "1"], stdout=DEVNULL)
 
     @staticmethod
     def turnOff():
         logging.debug("[Display]: Turning OFF the display..")
-        run(['vcgencmd', 'display_power', '0'], stdout=DEVNULL)
+        run(["vcgencmd", "display_power", "0"], stdout=DEVNULL)
 
 
 class Motion:
@@ -36,7 +36,8 @@ class Motion:
             logging.basicConfig(level=logging.INFO)
 
         logging.info(
-            f"[Motion]: Initializing - GPIO_PIN: {gpio_pin}, DISPLAY_DELAY: {display_delay}, VERBOSE: {verbose}")
+            f"[Motion]: Initializing - GPIO_PIN: {gpio_pin}, DISPLAY_DELAY: {display_delay}, VERBOSE: {verbose}"
+        )
 
         if verbose == True:
             logging.basicConfig(level=logging.DEBUG)
@@ -55,8 +56,17 @@ class Motion:
             self.timer.cancel()
 
         logging.debug(f"[Motion]: Setting timer for {self.display_delay}")
-        self.timer = Timer(self.display_delay, Display.turnOff)
+        self.timer = Timer(self.display_delay, self.checkMotionAndTurnOffDisplay)
         self.timer.start()
+
+    def checkMotionAndTurnOffDisplay(self):
+        logging.debug("[Motion]: Checking motion and turning off display..")
+        if self.pir.motion_detected:
+            logging.debug("[Motion]: Motion detected, resetting timer..")
+            self.resetTimer()
+        else:
+            logging.debug("[Motion]: No motion detected, turning off display..")
+            Display.turnOff()
 
     def onMotion(self):
         logging.debug("[Motion]: Motion detected!")
